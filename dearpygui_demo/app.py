@@ -8,7 +8,8 @@ temp_id = dpg.generate_uuid()
 output_id = dpg.generate_uuid()
 
 def callback():
-    print("Wind ID: " + str(dpg.get_value(wind_id)))
+    output = "Wind Value: " + str(dpg.get_value(wind_id))
+    dpg.set_value(output_id, output)
 
 dpg.create_viewport(title='Windchill Calculator', width=600, height=300)
 
