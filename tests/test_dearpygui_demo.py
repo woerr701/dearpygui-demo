@@ -6,6 +6,11 @@ def test_version():
 
 
 def test_calculate_windchill_for_low_range():
-    expected = 36.0
+    expected = 36
     results = app.calculate_windchill(5,40)
     assert expected == results
+
+
+def test_calculate_windchill_for_extreme_range():
+    expected = -98
+    results = app.calculate_windchill(60,-45)

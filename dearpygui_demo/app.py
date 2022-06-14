@@ -15,12 +15,20 @@ def get_results():
     wind = dpg.get_value(wind_id)
     temp = dpg.get_value(temp_id)
     windchill = calculate_windchill(wind, temp)
-    output = "Wind Value: " + str()
+    output = get_output(wind, temp, windchill)
     dpg.set_value(output_id, output)
 
 def calculate_windchill(w, t):
     # 35.74 + 0.6215×T - 35.75×V0.16 + 0.4275×T×V0.16
-    return 35.74 + 0.6215 * t - 35.75 * w**0.16 + 0.4275 * t * w**0.16
+    return int(35.74 + 0.6215 * t - 35.75 * w**0.16 + 0.4275 * t * w**0.16)
+
+def get_output(w, t, wc):
+    output = "With a windspeed of {}mph".format(w)
+    output += "\nand a temperature of {}F".format(t)
+    output += "\nThe temperature feels like {}F".format(wc)
+    return output 
+
+
 
 
 dpg.create_viewport(title='Windchill Calculator', width=600, height=300)
